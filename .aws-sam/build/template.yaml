@@ -1,0 +1,37 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: "process-map-data\nExtracts meta data from cross-functional process maps\
+  \ exported to SVG. \n"
+Globals:
+  Function:
+    Timeout: 5
+Resources:
+  ProcessMapData:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ProcessMapData
+      Handler: app.lambdaHandler
+      Runtime: nodejs12.x
+      Events:
+        ProcessMapData:
+          Type: Api
+          Properties:
+            Path: /data
+            Method: post
+Outputs:
+  ProcessMapDataApi:
+    Description: API Gateway endpoint URL for Prod stage for Process Map Data function
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/data/
+  ProcessMapData:
+    Description: Process Map Data Lambda Function ARN
+    Value:
+      Fn::GetAtt:
+      - ProcessMapData
+      - Arn
+  ProcessMapDataIamRole:
+    Description: Implicit IAM Role created for Process Map Data function
+    Value:
+      Fn::GetAtt:
+      - ProcessMapDataRole
+      - Arn

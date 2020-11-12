@@ -1,0 +1,20 @@
+{
+  "name": "process_map_data",
+  "version": "1.0.0",
+  "description": "Extract data from cross-finctional process maps.",
+  "main": "app.js",
+  "repository": "https://github.com/processesjs/process-map-data",
+  "author": "Vasil Nedev",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "jsonschema": "^1.4.0"
+  },
+  "scripts": {
+    "test": "mocha tests/unit/"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4"
+  }
+}
