@@ -14,10 +14,11 @@ function extractMetaData( strXML ){
 	// Extract all text elements
 	if( metaDataProps.has( flatStr( 'fulltext' ) ) ){
 		let text = ''
-		$( 'text' ).map( ( index , textTag ) => text.concat( $( textTag ).text() , ' ' ) )
+		$( 'svg' ).find( 'text' ).map( ( index , txt ) => text = text + $( txt ).text() + ' ' )
 		metaData[ metaDataProps.get( flatStr( 'fulltext' ) ) ] = text
 	}
-	// Extract all hyper-links
+
+	// Extract all hyperlinks
 	if( metaDataProps.has( flatStr( 'links' ) ) && processMapMetaDataSchema.properties[ metaDataProps.get( flatStr( 'links' ) ) ].type == 'array' ){
 		metaData[ metaDataProps.get( flatStr( 'links' ) ) ] = []
 		$( 'a' ).map( ( index , aTag ) => { 

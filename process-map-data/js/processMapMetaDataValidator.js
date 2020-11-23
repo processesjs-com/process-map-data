@@ -1,10 +1,12 @@
 const flatStr = require('./flatStr')
 let Validator = require('jsonschema').Validator
 
+/* An example of custom format
 Validator.prototype.customFormats.status = input => {
 	const validStatus = [ 'draft' , 'approvedwip' , 'approved' ]
   return validStatus.includes( flatStr( input ) )
 }
+*/
 
 let validator = new Validator()
 
@@ -14,12 +16,13 @@ const processMapMetaDataSchema = {
 	properties:{
 		ProcessId: { type: "string" },
 		ProcessTitle: { type: "string" },
+		Level: { type: "string" },
 		PageUrl: { type: "string" },
 		ParentId: { type: "string" },
-		Author: { type: "string" },
 		Owner: { type: "string" },
-		Status: { type: "string" , format: "status" },
+		DocumentNr: { type: "string" },
 		Revision: { type: "string" },
+		Date: { type: "string" },
 		Inputs: { type:"array" , items: { type: "string" } },
 		Outputs: { type:"array" , items: { type: "string" } },
 		Swimlanes: { type:"array" , items: { type: "string" } },
